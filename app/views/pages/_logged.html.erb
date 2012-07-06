@@ -1,0 +1,40 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+<script>
+	$(function() {
+		var friends = <%= @friends.to_json.html_safe %>;
+
+		$( "#search" ).autocomplete({
+			minLength: 2,
+			source: function( request, response ) {
+		        var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
+		        response($.grep(friends, function(value) {
+		            return matcher.test(value.value)
+		                || matcher.test(value.label);
+		        }));
+			}
+		}).data( "autocomplete" )._renderItem = function( ul, item ) {
+			return $( "<li></li>" )
+			.data( "item.autocomplete", item )
+			.append( "<a>" + '<img src="' + item.img + '"><strong>@' + item.value + "</strong><br>" + item.label + "</a>" )
+			.appendTo( ul );
+		};
+	});
+</script>
+
+
+
+<% if Twitter.rate_limit_status.remaining_hits > 50 %>
+	<p class="counter green">
+<% else %>
+	<p class="counter red">
+<% end %>
+<%= Twitter.rate_limit_status.remaining_hits %>/<%= Twitter.rate_limit_status.hourly_limit %>
+</p>
+
+<p>Welcome, <%= current_user.name %> | <%= link_to "Sign Out", signout_path %></p>
+
+<p class="wrapper"><input type="text" id="search" /></p>
+
+
+
+

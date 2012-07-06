@@ -1,0 +1,65 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+	font-family: Arial, sans-serif;
+}
+#search {
+	border-radius: 100px;
+	border: 1px solid #CCC;
+	padding: 5px;
+	width: 300px;
+	outline: 0;
+}
+
+.counter {
+	position: absolute;
+	top: 0;
+	right: 10px;
+}
+
+.green {
+	color: green;
+}
+.red {
+	color: red;
+}
+
+.ui-autocomplete {
+	max-height: 360px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	margin: 0;
+	padding: 0;
+	width: 300px;
+	background: #EEE;
+}
+
+.ui-menu-item {
+	font-size: 13px;
+	height: 56px;
+	cursor: pointer;
+	list-style: none;
+	a {
+		margin: 2px;
+		display: block;
+		height: 48px;
+		border-radius: 4px;
+		padding: 4px;
+		&.ui-state-hover {
+			background: #CCC;
+		}
+		img {
+			float: left;
+			margin-right: 3px;
+			width: 48px;
+			height: 48px;
+		}
+	}
+}
+
+.wrapper {
+	text-align: center;
+	margin-top: 100px;
+}
